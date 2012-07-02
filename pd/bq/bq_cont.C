@@ -29,6 +29,12 @@ namespace pd {
 #define STACK_SIZE (8*1024*1024)
 #define MISC_REG_NUM (5)
 
+#elif defined(__arm__)
+
+#define PAGE_SIZE (4096)
+#define STACK_SIZE (2*1024*1024)
+#define MISC_REG_NUM (8)
+
 #else
 #error Not implemented yet
 #endif
@@ -65,8 +71,7 @@ unsigned int bq_spec_reserve() throw() {
 
 #if \
 	__gcc_version_current >= __gcc_version(3, 3, 0) &&  \
-	__gcc_version_current < __gcc_version(4, 7, 0) && \
-	!defined(__arm__)
+	__gcc_version_current < __gcc_version(4, 7, 0)
 
 struct __cxa_eh_globals {
 	void *caughtExceptions;

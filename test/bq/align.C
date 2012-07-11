@@ -2,6 +2,8 @@
  * compile it with '-O2' to see the effect
  */
 
+#if defined(__x86_64__)
+
 #ifndef __OPTIMIZE__
 #error not interested without otimisation
 #endif
@@ -56,3 +58,11 @@ extern "C" int main() {
 
 	return 0;
 }
+
+#else
+
+extern "C" int main() {
+	return 0;
+}
+
+#endif

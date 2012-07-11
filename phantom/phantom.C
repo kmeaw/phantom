@@ -237,8 +237,8 @@ void phantom_t::run(string_t const &conf_name) {
 		if(need_stat) {
 			interval_t period = config.stat.period;
 			if(period > interval_zero) {
-				unsigned int s = period / interval_second;
-				unsigned int ms = (period % interval_second) / interval_microsecond;
+				time_t s = period / interval_second;
+				suseconds_t ms = (period % interval_second) / interval_microsecond;
 				itimerval it = { { s, ms }, { s, ms } };
 				setitimer(ITIMER_REAL, &it, NULL);
 			}

@@ -69,13 +69,15 @@ unsigned int bq_spec_reserve() throw() {
 	return bq_spec_num++;
 }
 
-#if \
-	__gcc_version_current >= __gcc_version(3, 3, 0) &&  \
-	__gcc_version_current < __gcc_version(4, 7, 0)
+#if defined(__GXX_ABI_VERSION) && __GXX_ABI_VERSION == 1002
 
 struct __cxa_eh_globals {
 	void *caughtExceptions;
 	unsigned int uncaughtExceptions;
+
+#ifdef __ARM_EABI__
+	void *propagatingExceptions;
+#endif
 
 	inline __cxa_eh_globals() throw() :
 		caughtExceptions(NULL), uncaughtExceptions(0) { }

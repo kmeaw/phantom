@@ -6,6 +6,8 @@
 
 .file "bq_cont_supp.S"
 
+.section .note.GNU-stack,"",%progbits
+
 #if defined(__i386__)
 
 #define FUNCTION(fun) \

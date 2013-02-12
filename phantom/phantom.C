@@ -479,6 +479,8 @@ extern "C" int main(int _argc, char *_argv[], char *_envp[]) {
 
 			(mode == run ? phantom_t::run : phantom_t::check)(name);
 		}
+
+		return 0;
 	}
 	catch(exception_t const &ex) {
 		ex.log();
@@ -487,7 +489,7 @@ extern "C" int main(int _argc, char *_argv[], char *_envp[]) {
 		log_error("unknown exception");
 	}
 
-	return 0;
+	return 1;
 }
 
 } // namespace phantom

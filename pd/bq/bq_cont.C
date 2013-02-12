@@ -166,7 +166,7 @@ public:
 		spec_num(bq_spec_num) {
 
 		for(unsigned int i = 0; i < spec_num; ++i)
-			(*this)[i] = NULL;
+			((void **)this)[-2 - (int)i] = NULL; // (*this)[i] = NULL;
 
 		for(unsigned int i = 0; i < bq_cont_states; ++i)
 			stat[i] = interval_zero;

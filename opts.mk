@@ -28,7 +28,8 @@ $(eval $(call FIXZERODEPS,$(shell find deps/ -size 0 -printf "%P ")))
 FIXINC ?= -isystem /usr/include/pd/fixinclude
 
 CPPFLAGS = \
-	$(FIXINC) -D_GNU_SOURCE=1 $(CPPDEFS) -Wundef
+	$(FIXINC) -D_GNU_SOURCE=1 -DPACKAGE='"phantom"' \
+	-DPACKAGE_VERSION='"$(shell sed -n -e '1s/.*(\(.*\)).*/\1/p' debian/changelog)"' $(CPPDEFS) -Wundef
 
 DEPS = \
 	-MD -MF deps/$(subst /,%,$(@)).d
